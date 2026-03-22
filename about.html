@@ -4,18 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Ball Financial</title>
+  <meta name="description" content="Learn about Ball Financial, a financial planning firm rooted in the legacy of Ball Insurance Agency, offering retirement planning, investment management, and comprehensive financial advice." />
 
   <style>
     :root{
-      --primary:#0f2a44;
-      --accent:#b08a3e;
+      --bg:#f6f8fb;
+      --white:#ffffff;
+      --primary:#142c44;
+      --secondary:#234d74;
       --text:#1a1a1a;
       --muted:#5f6b7a;
-      --border:#e6ebf0;
-      --bg:#f7f9fc;
-      --max:1100px;
+      --border:#e1e7ee;
+      --accent:#b08a3e;
+      --max-width:1100px;
     }
 
+    *{box-sizing:border-box}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
@@ -25,7 +29,7 @@
     }
 
     .container{
-      max-width:var(--max);
+      max-width:var(--max-width);
       margin:auto;
       padding:20px;
     }
@@ -61,6 +65,7 @@
       border-radius:6px;
       text-decoration:none;
       font-weight:600;
+      display:inline-block;
     }
 
     .btn-primary{
@@ -69,30 +74,28 @@
     }
 
     .hero{
+      padding:80px 0;
       background:#fff;
-      padding:90px 0;
     }
 
     .hero h1{
-      font-size:48px;
-      line-height:1.15;
+      font-size:44px;
+      margin-bottom:16px;
       color:var(--primary);
-      max-width:800px;
     }
 
     .hero p{
       font-size:18px;
       color:var(--muted);
       max-width:650px;
-      margin-top:16px;
     }
 
     .section{
-      padding:70px 0;
+      padding:60px 0;
     }
 
     h2{
-      font-size:34px;
+      font-size:32px;
       color:var(--primary);
       margin-bottom:20px;
     }
@@ -103,14 +106,14 @@
     }
 
     .grid-3{
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     }
 
     .card{
       background:#fff;
       border:1px solid var(--border);
-      padding:24px;
-      border-radius:10px;
+      padding:20px;
+      border-radius:8px;
     }
 
     .card h3{
@@ -121,8 +124,8 @@
     .cta{
       background:var(--primary);
       color:#fff;
-      padding:50px;
-      border-radius:10px;
+      padding:40px;
+      border-radius:8px;
       text-align:center;
     }
 
@@ -130,6 +133,7 @@
       padding:40px 0;
       text-align:center;
       color:#777;
+      font-size:14px;
     }
   </style>
 </head>
@@ -151,61 +155,47 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Most financial advice is fragmented. Ours is built to connect everything.</h1>
+    <h1>A financial planning relationship built on trust, clarity, and long-term thinking.</h1>
     <p>
-      Ball Financial exists for people who have outgrown one-off advice and want a more structured, coordinated approach to financial planning, retirement, and long-term decision making.
+      Ball Financial was created to provide a more comprehensive approach to financial planning — one that goes beyond products and focuses on helping individuals and families make better long-term decisions.
     </p>
     <br>
-    <a href="contact.html" class="btn btn-primary">Start Your Plan</a>
+    <a href="contact.html" class="btn btn-primary">Schedule a Consultation</a>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2>Built from a legacy of trust. Designed for more complex decisions.</h2>
-
+    <h2>From trusted roots to a more complete approach</h2>
     <p>
-      Ball Financial is an extension of Ball Insurance Agency — a business built on long-term relationships and trust within the Sandusky community.
+      Ball Financial is built on the foundation of Ball Insurance Agency — a long-standing presence in Sandusky, Michigan. That history is rooted in relationships, trust, and helping people protect what matters.
     </p>
-
     <p>
-      Over time, the needs of clients evolved. Conversations moved beyond insurance into retirement planning, investment strategy, tax considerations, and broader financial decisions.
+      Over time, it became clear that many clients needed more than insurance. They needed guidance across investments, retirement planning, taxes, and long-term financial decisions.
     </p>
-
     <p>
-      The reality was simple: most people weren’t lacking products — they were lacking coordination.
-    </p>
-
-    <p>
-      Ball Financial was created to solve that problem. Not by replacing the foundation of the agency, but by building on it with a more complete financial planning approach.
+      Ball Financial was created as a natural evolution — a way to provide a more complete, coordinated financial planning experience while maintaining the same level of trust the agency was built on.
     </p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2>Our approach to financial planning</h2>
-
+    <h2>How we think about financial planning</h2>
     <div class="grid grid-3">
       <div class="card">
-        <h3>Planning drives decisions</h3>
-        <p>
-          Every recommendation starts with a clear plan. Without structure, financial decisions become reactive and disconnected.
-        </p>
+        <h3>Planning comes first</h3>
+        <p>Decisions are driven by a clear financial plan, not by products or transactions.</p>
       </div>
 
       <div class="card">
-        <h3>Coordination creates better outcomes</h3>
-        <p>
-          Investments, taxes, insurance, and retirement strategy are interdependent. Treating them separately leads to missed opportunities.
-        </p>
+        <h3>Everything is connected</h3>
+        <p>Investments, taxes, insurance, and retirement decisions should work together — not in isolation.</p>
       </div>
 
       <div class="card">
-        <h3>Simplicity is a priority</h3>
-        <p>
-          The goal is not complexity — it’s clarity. Decisions should be understandable, practical, and aligned with your life.
-        </p>
+        <h3>Clarity over complexity</h3>
+        <p>Financial decisions should be understandable and practical, not confusing or overwhelming.</p>
       </div>
     </div>
   </div>
@@ -214,27 +204,20 @@
 <section class="section">
   <div class="container">
     <h2>What makes Ball Financial different</h2>
-
     <div class="grid grid-3">
       <div class="card">
-        <h3>Not product-driven</h3>
-        <p>
-          Advice is not built around selling a solution. It is built around understanding the full financial picture first.
-        </p>
+        <h3>Planning-first approach</h3>
+        <p>Advice starts with your situation, not a product or pitch.</p>
       </div>
 
       <div class="card">
-        <h3>Designed for real complexity</h3>
-        <p>
-          As income grows and financial lives become more layered, decisions require more structure, not more noise.
-        </p>
+        <h3>Relationship-driven</h3>
+        <p>Long-term relationships matter more than one-time transactions.</p>
       </div>
 
       <div class="card">
-        <h3>Long-term orientation</h3>
-        <p>
-          The focus is not on short-term moves, but on building a strategy that holds up over time.
-        </p>
+        <h3>Coordinated strategy</h3>
+        <p>Your financial life is connected — your plan should be too.</p>
       </div>
     </div>
   </div>
@@ -242,28 +225,21 @@
 
 <section class="section">
   <div class="container">
-    <h2>Who we typically work with</h2>
-
+    <h2>Who we work with</h2>
     <div class="grid grid-3">
       <div class="card">
         <h3>Pre-retirees</h3>
-        <p>
-          Individuals who are approaching retirement and want to understand how their decisions today impact the next phase of life.
-        </p>
+        <p>Individuals preparing for retirement who want clarity and confidence.</p>
       </div>
 
       <div class="card">
         <h3>Retirees</h3>
-        <p>
-          Clients focused on income strategy, portfolio alignment, and maintaining long-term financial stability.
-        </p>
+        <p>Clients focused on income, distribution strategies, and long-term planning.</p>
       </div>
 
       <div class="card">
-        <h3>Business owners & high earners</h3>
-        <p>
-          People with increasing complexity who need more than surface-level advice.
-        </p>
+        <h3>Business owners & families</h3>
+        <p>Those managing more complexity and looking for coordinated financial guidance.</p>
       </div>
     </div>
   </div>
@@ -271,14 +247,12 @@
 
 <section class="section">
   <div class="container">
-    <h2>What you can expect</h2>
-
+    <h2>Built on trust. Focused on long-term results.</h2>
     <p>
-      Working with Ball Financial means having a clearer structure around your financial life, better alignment across decisions, and a more intentional approach to planning.
+      Ball Financial combines the legacy of a trusted local business with a more modern, comprehensive financial planning approach.
     </p>
-
     <p>
-      It is not about adding more complexity. It is about removing unnecessary noise and focusing on what actually moves the needle.
+      The goal is simple — help clients make better decisions, stay organized, and move forward with confidence.
     </p>
   </div>
 </section>
@@ -286,12 +260,10 @@
 <section class="section">
   <div class="container">
     <div class="cta">
-      <h2>If you’re looking for more than surface-level advice, let’s talk.</h2>
-      <p>
-        Start with a conversation. No pressure — just a clearer understanding of where you are and what comes next.
-      </p>
+      <h2>Start the conversation.</h2>
+      <p>Have a simple, no-pressure discussion about your financial situation and where you want to go.</p>
       <br>
-      <a href="contact.html" class="btn btn-primary">Schedule a Consultation</a>
+      <a href="contact.html" class="btn btn-primary">Book a Meeting</a>
     </div>
   </div>
 </section>
