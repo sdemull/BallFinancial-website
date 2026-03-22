@@ -1,17 +1,839 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Services | Ball Financial</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Ball Financial</title>
+  <meta
+    name="description"
+    content="Explore Ball Financial services including comprehensive financial planning, retirement planning, investment management, tax-aware planning, insurance coordination, and estate planning."
+  />
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --surface:#ffffff;
+      --surface-soft:#f2f5f9;
+      --text:#152235;
+      --muted:#5f6b7a;
+      --line:#d9e1ea;
+      --primary:#17324d;
+      --primary-2:#234d74;
+      --accent:#b08a3e;
+      --max:1200px;
+      --radius:20px;
+      --shadow:0 18px 50px rgba(23,50,77,.10);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,#fbfcfe 0%, #f4f7fa 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#10253a;
+      color:#e8eef5;
+      font-size:14px;
+      padding:10px 0;
+    }
+
+    .topbar .container{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(21,34,53,.08);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:16px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,var(--primary),var(--primary-2));
+      color:#fff;
+      font-weight:800;
+      box-shadow:var(--shadow);
+    }
+
+    .brand-text strong{
+      display:block;
+      font-size:21px;
+      line-height:1;
+      color:var(--primary);
+      letter-spacing:.1px;
+    }
+
+    .brand-text span{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:600;
+      margin-top:5px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      font-size:15px;
+      font-weight:650;
+      color:var(--text);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:800;
+      transition:.18s ease;
+      cursor:pointer;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--primary);
+      border-color:var(--line);
+    }
+
+    .btn-accent{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      padding:84px 0 54px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:26px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#edf4fa;
+      color:var(--primary);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 14px;
+    }
+
+    h1{
+      font-size:clamp(38px, 5.5vw, 64px);
+      line-height:1.03;
+      letter-spacing:-1.4px;
+      color:var(--primary);
+      margin-top:16px;
+      max-width:880px;
+    }
+
+    h2{
+      font-size:clamp(30px, 4vw, 42px);
+      line-height:1.08;
+      letter-spacing:-.8px;
+      color:var(--primary);
+    }
+
+    h3{
+      font-size:24px;
+      line-height:1.15;
+      color:var(--primary);
+    }
+
+    h4{
+      font-size:18px;
+      line-height:1.2;
+      color:var(--primary);
+    }
+
+    .lead{
+      font-size:19px;
+      color:var(--muted);
+      max-width:760px;
+      margin:0 0 24px;
+    }
+
+    .hero-card,
+    .card,
+    .panel,
+    .cta-band{
+      background:rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card,
+    .card,
+    .panel{
+      padding:26px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
+    }
+
+    .hero-card p,
+    .card p,
+    .panel p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .list li{
+      position:relative;
+      padding-left:28px;
+      margin:10px 0;
+      color:var(--muted);
+    }
+
+    .list li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--accent);
+      font-weight:900;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .mini-stat{
+      background:var(--surface-soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .mini-stat strong{
+      display:block;
+      font-size:22px;
+      color:var(--primary);
+    }
+
+    .mini-stat span{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .section{
+      padding:76px 0;
+    }
+
+    .section-intro{
+      max-width:760px;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 28px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+      display:grid;
+      gap:22px;
+    }
+
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+    .service-card{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      height:100%;
+    }
+
+    .service-card .tag{
+      display:inline-flex;
+      width:max-content;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#f2f6fb;
+      color:var(--primary);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+
+    .service-meta{
+      margin-top:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding-top:8px;
+      border-top:1px solid var(--line);
+    }
+
+    .service-meta a{
+      font-weight:800;
+      color:var(--primary);
+      font-size:15px;
+    }
+
+    .service-meta span{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .audience-card{
+      background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
+    }
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
+      counter-reset:step;
+    }
+
+    .process-step{
+      position:relative;
+      padding:24px 22px 22px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .process-step::before{
+      counter-increment:step;
+      content:counter(step);
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,var(--primary),var(--primary-2));
+      color:#fff;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .process-step p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .cta-band{
+      padding:36px;
+      background:linear-gradient(135deg,var(--primary) 0%, #274d72 100%);
+      color:#fff;
+    }
+
+    .cta-band h2,
+    .cta-band h3{
+      color:#fff;
+    }
+
+    .cta-band p{
+      color:rgba(255,255,255,.86);
+      margin:0 0 18px;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    .cta-panel{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:24px;
+    }
+
+    .cta-panel p,
+    .cta-panel li{
+      color:rgba(255,255,255,.88);
+    }
+
+    .site-footer{
+      background:#0f2235;
+      color:#e3ebf3;
+      padding:48px 0 24px;
+      margin-top:32px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .site-footer h3{color:#fff}
+    .site-footer p,
+    .site-footer a{
+      color:rgba(255,255,255,.84);
+      margin:0 0 10px;
+    }
+
+    .footer-note{
+      border-top:1px solid rgba(255,255,255,.15);
+      margin-top:22px;
+      padding-top:18px;
+      color:rgba(255,255,255,.68);
+      font-size:14px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .process,
+      .split,
+      .cta-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .nav .btn-row .btn-secondary{
+        display:none;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero{
+        padding:64px 0 42px;
+      }
+
+      .section{
+        padding:58px 0;
+      }
+
+      .mini-grid{
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Services</h1>
-<ul>
-<li>Retirement Planning</li>
-<li>Investment Planning</li>
-<li>Insurance Coordination</li>
-<li>Tax Planning</li>
-</ul>
-<a href="index.html">Home</a>
+  <div class="topbar">
+    <div class="container">
+      <div>Ball Financial | Financial Planning Services</div>
+      <div>Sandusky, Michigan | (810) 648-3033</div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Ball Financial home">
+        <div class="brand-mark">BF</div>
+        <div class="brand-text">
+          <strong>Ball Financial</strong>
+          <span>A branch of Ball Insurance Agency</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="about.html">Why Ball Financial</a>
+        <a class="btn btn-primary" href="contact.html">Schedule a Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Comprehensive Financial Planning Services</span>
+          <h1>Services built to help people move from scattered decisions to a more coordinated financial life.</h1>
+          <p class="lead">
+            Ball Financial provides financial planning, retirement planning, investment management, tax-aware planning, insurance coordination, and legacy-focused guidance for individuals, retirees, families, and business owners who want clarity and direction.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="contact.html">Start Your Plan</a>
+            <a class="btn btn-secondary" href="#services-overview">Explore Services</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>What this page should communicate fast</h3>
+          <ul class="list">
+            <li>Ball Financial offers broader financial planning, not just isolated product conversations</li>
+            <li>Services are connected and designed to work together</li>
+            <li>The experience is built for real people with real complexity, not generic one-size-fits-all advice</li>
+            <li>The next step is clear: Schedule a Consultation</li>
+          </ul>
+
+          <div class="mini-grid">
+            <div class="mini-stat">
+              <strong>Clear</strong>
+              <span>planning-first positioning</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Premium</strong>
+              <span>professional service framing</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Actionable</strong>
+              <span>multiple CTA paths</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="services-overview">
+      <div class="container">
+        <h2>Financial planning services with structure, depth, and room to grow</h2>
+        <p class="section-intro">
+          Each section below is written to help the visitor understand the service now while also creating a clean path to future service-specific SEO landing pages.
+        </p>
+
+        <div class="grid-2">
+          <article class="card service-card">
+            <span class="tag">Core Planning</span>
+            <h3>Comprehensive Financial Planning</h3>
+            <p>
+              A broader financial planning relationship designed to organize your goals, priorities, assets, risks, and next steps into one working strategy.
+            </p>
+            <ul class="list">
+              <li>Goal setting and planning priorities</li>
+              <li>Cash flow, balance sheet, and account review</li>
+              <li>Coordination across investments, taxes, and insurance</li>
+              <li>Action steps with ongoing planning updates</li>
+            </ul>
+            <div class="service-meta">
+              <a href="#">Learn more</a>
+              <span>Future SEO page: /comprehensive-financial-planning</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <span class="tag">Retirement</span>
+            <h3>Retirement Planning</h3>
+            <p>
+              Retirement planning built to help you understand when retirement may be possible, how income may be generated, and how decisions today affect the years ahead.
+            </p>
+            <ul class="list">
+              <li>Retirement readiness analysis</li>
+              <li>Retirement income and withdrawal strategy</li>
+              <li>Social Security timing discussion</li>
+              <li>Portfolio alignment for the retirement transition</li>
+            </ul>
+            <div class="service-meta">
+              <a href="#">Learn more</a>
+              <span>Future SEO page: /retirement-planning</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <span class="tag">Investments</span>
+            <h3>Investment Management</h3>
+            <p>
+              Investment management that fits within the broader plan, with attention to risk, time horizon, income needs, and long-term objectives.
+            </p>
+            <ul class="list">
+              <li>Portfolio review and investment strategy</li>
+              <li>Risk alignment and allocation decisions</li>
+              <li>Long-term investment oversight</li>
+              <li>Integration with retirement and financial planning goals</li>
+            </ul>
+            <div class="service-meta">
+              <a href="#">Learn more</a>
+              <span>Future SEO page: /investment-management</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <span class="tag">Tax-Aware Strategy</span>
+            <h3>Tax-Aware Planning</h3>
+            <p>
+              Tax-aware planning that helps frame financial decisions more intelligently without reducing the relationship to taxes alone.
+            </p>
+            <ul class="list">
+              <li>Account structure review</li>
+              <li>Retirement distribution considerations</li>
+              <li>Tax-sensitive decision support</li>
+              <li>Coordination with the client’s tax professional</li>
+            </ul>
+            <div class="service-meta">
+              <a href="#">Learn more</a>
+              <span>Future SEO page: /tax-aware-financial-planning</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <span class="tag">Protection</span>
+            <h3>Insurance Coordination</h3>
+            <p>
+              Insurance coordination that evaluates coverage decisions through the lens of the overall financial plan rather than in isolation.
+            </p>
+            <ul class="list">
+              <li>Life insurance review</li>
+              <li>Disability and income protection discussion</li>
+              <li>Long-term care planning considerations</li>
+              <li>Coverage gaps and overlap review</li>
+            </ul>
+            <div class="service-meta">
+              <a href="#">Learn more</a>
+              <span>Future SEO page: /insurance-coordination</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <span class="tag">Legacy</span>
+            <h3>Estate & Legacy Planning</h3>
+            <p>
+              Legacy-focused planning that helps clients think through beneficiaries, family goals, and how wealth may be transferred with greater intention.
+            </p>
+            <ul class="list">
+              <li>Beneficiary and titling review</li>
+              <li>Legacy and family planning priorities</li>
+              <li>Coordination with estate planning professionals</li>
+              <li>Guidance around long-term wealth transfer goals</li>
+            </ul>
+            <div class="service-meta">
+              <a href="#">Learn more</a>
+              <span>Future SEO page: /estate-and-legacy-planning</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Who this helps</h2>
+        <p class="section-intro">
+          Services convert better when the visitor can see themselves in the page. This section ties the offer back to the right audiences.
+        </p>
+
+        <div class="grid-4">
+          <article class="card audience-card">
+            <h4>Individuals nearing retirement</h4>
+            <p>For people within roughly 5 to 10 years of retirement who want more confidence around timing, income, and readiness.</p>
+          </article>
+
+          <article class="card audience-card">
+            <h4>Retirees</h4>
+            <p>For households that need ongoing planning around income, withdrawal strategy, tax efficiency, and portfolio decisions.</p>
+          </article>
+
+          <article class="card audience-card">
+            <h4>Families building wealth</h4>
+            <p>For people managing careers, family priorities, saving goals, risk protection, and longer-term financial planning.</p>
+          </article>
+
+          <article class="card audience-card">
+            <h4>Business owners & higher earners</h4>
+            <p>For clients with more financial complexity who want advice that connects personal strategy to bigger financial decisions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="panel">
+          <h2>How planning works</h2>
+          <p style="margin-bottom:18px;">
+            The page should make the process feel straightforward. That lowers friction and helps higher-quality prospects move faster.
+          </p>
+          <div class="process">
+            <article class="process-step">
+              <h4>Intro conversation</h4>
+              <p>Start with goals, priorities, and what prompted the outreach.</p>
+            </article>
+
+            <article class="process-step">
+              <h4>Discovery</h4>
+              <p>Review the financial picture across assets, income, insurance, taxes, and planning needs.</p>
+            </article>
+
+            <article class="process-step">
+              <h4>Recommendations</h4>
+              <p>Organize the options into a practical strategy with clear priorities.</p>
+            </article>
+
+            <article class="process-step">
+              <h4>Implementation & review</h4>
+              <p>Help put the plan into action and update it as life changes.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>How future SEO pages should expand</h2>
+          <p style="margin-bottom:16px;">
+            Each service above can become a dedicated landing page with stronger search intent targeting and deeper conversion copy.
+          </p>
+          <ul class="list">
+            <li>Service-specific headline and problem framing</li>
+            <li>Who the service is for</li>
+            <li>Common questions and planning scenarios</li>
+            <li>What is included in the service</li>
+            <li>FAQ section for search intent support</li>
+            <li>Repeated CTA to Schedule a Consultation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <div class="cta-grid">
+            <div>
+              <h2>Serious planning starts with a real conversation.</h2>
+              <p>
+                Whether you need retirement planning, investment management, or a broader financial planning relationship, Ball Financial is designed to help you move forward with more clarity and structure.
+              </p>
+              <div class="btn-row">
+                <a class="btn btn-secondary" href="contact.html" style="background:#fff;color:#17324d;border-color:#fff;">Book a Meeting</a>
+                <a class="btn btn-accent" href="contact.html">Schedule a Consultation</a>
+              </div>
+            </div>
+
+            <div class="cta-panel">
+              <h3>Good closing CTA language</h3>
+              <ul class="list">
+                <li>Start Your Plan</li>
+                <li>Book a Meeting</li>
+                <li>Schedule a Consultation</li>
+                <li>Talk Through Your Next Steps</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Ball Financial</h3>
+          <p>Financial planning, retirement planning, investment management, and coordinated advice for individuals, families, retirees, and business owners.</p>
+        </div>
+        <div>
+          <h3>Pages</h3>
+          <p><a href="index.html">Home</a></p>
+          <p><a href="services.html">Services</a></p>
+          <p><a href="about.html">About</a></p>
+          <p><a href="contact.html">Contact</a></p>
+        </div>
+        <div>
+          <h3>Next Step</h3>
+          <p>Schedule a Consultation</p>
+          <p>(810) 648-3033</p>
+          <p>Sandusky, Michigan</p>
+        </div>
+      </div>
+      <div class="footer-note">
+        Replace this footer with your actual disclosure language, privacy links, registration details, and compliance-required content before launch.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
