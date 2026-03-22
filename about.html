@@ -4,275 +4,786 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Ball Financial</title>
-  <meta name="description" content="Learn about Ball Financial, a financial planning firm rooted in the legacy of Ball Insurance Agency, offering retirement planning, investment management, and comprehensive financial advice." />
-
+  <meta
+    name="description"
+    content="Learn about Ball Financial, a planning-focused branch of Ball Insurance Agency, built to provide comprehensive financial planning, retirement planning, and investment guidance."
+  />
   <style>
     :root{
       --bg:#f6f8fb;
-      --white:#ffffff;
-      --primary:#142c44;
-      --secondary:#234d74;
-      --text:#1a1a1a;
+      --surface:#ffffff;
+      --surface-soft:#f2f5f9;
+      --text:#152235;
       --muted:#5f6b7a;
-      --border:#e1e7ee;
+      --line:#d9e1ea;
+      --primary:#17324d;
+      --primary-2:#234d74;
       --accent:#b08a3e;
-      --max-width:1100px;
+      --max:1200px;
+      --radius:20px;
+      --shadow:0 18px 50px rgba(23,50,77,.10);
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,#fbfcfe 0%, #f4f7fa 100%);
       color:var(--text);
-      background:var(--bg);
       line-height:1.6;
     }
 
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
     .container{
-      max-width:var(--max-width);
-      margin:auto;
-      padding:20px;
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
     }
 
-    header{
-      background:#fff;
-      border-bottom:1px solid var(--border);
+    .topbar{
+      background:#10253a;
+      color:#e8eef5;
+      font-size:14px;
+      padding:10px 0;
+    }
+
+    .topbar .container{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .site-header{
       position:sticky;
       top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(21,34,53,.08);
     }
 
     .nav{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:16px 0;
     }
 
-    .logo{
-      font-weight:700;
-      font-size:20px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,var(--primary),var(--primary-2));
+      color:#fff;
+      font-weight:800;
+      box-shadow:var(--shadow);
+    }
+
+    .brand-text strong{
+      display:block;
+      font-size:21px;
+      line-height:1;
       color:var(--primary);
+      letter-spacing:.1px;
     }
 
-    .nav a{
-      margin-left:20px;
-      text-decoration:none;
-      color:#333;
-      font-weight:500;
+    .brand-text span{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:600;
+      margin-top:5px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      font-size:15px;
+      font-weight:650;
+      color:var(--text);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     .btn{
-      padding:12px 18px;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:600;
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:800;
+      transition:.18s ease;
+      cursor:pointer;
     }
+
+    .btn:hover{transform:translateY(-1px)}
 
     .btn-primary{
       background:var(--primary);
       color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--primary);
+      border-color:var(--line);
+    }
+
+    .btn-accent{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:var(--shadow);
     }
 
     .hero{
-      padding:80px 0;
-      background:#fff;
+      padding:84px 0 54px;
     }
 
-    .hero h1{
-      font-size:44px;
-      margin-bottom:16px;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:26px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#edf4fa;
       color:var(--primary);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.6px;
+      text-transform:uppercase;
     }
 
-    .hero p{
-      font-size:18px;
-      color:var(--muted);
-      max-width:650px;
+    h1,h2,h3,h4{
+      margin:0 0 14px;
     }
 
-    .section{
-      padding:60px 0;
+    h1{
+      font-size:clamp(38px, 5.5vw, 64px);
+      line-height:1.03;
+      letter-spacing:-1.4px;
+      color:var(--primary);
+      margin-top:16px;
+      max-width:880px;
     }
 
     h2{
-      font-size:32px;
+      font-size:clamp(30px, 4vw, 42px);
+      line-height:1.08;
+      letter-spacing:-.8px;
       color:var(--primary);
-      margin-bottom:20px;
     }
 
-    .grid{
+    h3{
+      font-size:24px;
+      line-height:1.15;
+      color:var(--primary);
+    }
+
+    h4{
+      font-size:18px;
+      line-height:1.2;
+      color:var(--primary);
+    }
+
+    .lead{
+      font-size:19px;
+      color:var(--muted);
+      max-width:760px;
+      margin:0 0 24px;
+    }
+
+    .hero-card,
+    .card,
+    .panel,
+    .cta-band{
+      background:rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card,
+    .card,
+    .panel{
+      padding:26px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
+    }
+
+    .hero-card p,
+    .card p,
+    .panel p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .list li{
+      position:relative;
+      padding-left:28px;
+      margin:10px 0;
+      color:var(--muted);
+    }
+
+    .list li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--accent);
+      font-weight:900;
+    }
+
+    .mini-grid{
       display:grid;
-      gap:20px;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:18px;
     }
 
-    .grid-3{
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    .mini-stat{
+      background:var(--surface-soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
     }
 
-    .card{
-      background:#fff;
-      border:1px solid var(--border);
-      padding:20px;
-      border-radius:8px;
-    }
-
-    .card h3{
-      margin-top:0;
+    .mini-stat strong{
+      display:block;
+      font-size:22px;
       color:var(--primary);
     }
 
-    .cta{
-      background:var(--primary);
-      color:#fff;
-      padding:40px;
-      border-radius:8px;
-      text-align:center;
+    .mini-stat span{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
     }
 
-    footer{
-      padding:40px 0;
-      text-align:center;
-      color:#777;
+    .section{
+      padding:76px 0;
+    }
+
+    .section-intro{
+      max-width:760px;
+      color:var(--muted);
+      font-size:18px;
+      margin:0 0 28px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+      display:grid;
+      gap:22px;
+    }
+
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+    .story-card{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      height:100%;
+    }
+
+    .story-card .tag{
+      display:inline-flex;
+      width:max-content;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#f2f6fb;
+      color:var(--primary);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
+      counter-reset:step;
+    }
+
+    .process-step{
+      position:relative;
+      padding:24px 22px 22px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .process-step::before{
+      counter-increment:step;
+      content:counter(step);
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,var(--primary),var(--primary-2));
+      color:#fff;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .process-step p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .cta-band{
+      padding:36px;
+      background:linear-gradient(135deg,var(--primary) 0%, #274d72 100%);
+      color:#fff;
+    }
+
+    .cta-band h2,
+    .cta-band h3{
+      color:#fff;
+    }
+
+    .cta-band p{
+      color:rgba(255,255,255,.86);
+      margin:0 0 18px;
+    }
+
+    .cta-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    .cta-panel{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:24px;
+    }
+
+    .cta-panel p,
+    .cta-panel li{
+      color:rgba(255,255,255,.88);
+    }
+
+    .site-footer{
+      background:#0f2235;
+      color:#e3ebf3;
+      padding:48px 0 24px;
+      margin-top:32px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:24px;
+    }
+
+    .site-footer h3{color:#fff}
+    .site-footer p,
+    .site-footer a{
+      color:rgba(255,255,255,.84);
+      margin:0 0 10px;
+    }
+
+    .footer-note{
+      border-top:1px solid rgba(255,255,255,.15);
+      margin-top:22px;
+      padding-top:18px;
+      color:rgba(255,255,255,.68);
       font-size:14px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .process,
+      .split,
+      .cta-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .nav .btn-row .btn-secondary{
+        display:none;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero{
+        padding:64px 0 42px;
+      }
+
+      .section{
+        padding:58px 0;
+      }
+
+      .mini-grid{
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        width:100%;
+      }
     }
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container nav">
-    <div class="logo">Ball Financial</div>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <a href="contact.html" class="btn btn-primary">Schedule a Consultation</a>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="container">
-    <h1>A financial planning relationship built on trust, clarity, and long-term thinking.</h1>
-    <p>
-      Ball Financial was created to provide a more comprehensive approach to financial planning — one that goes beyond products and focuses on helping individuals and families make better long-term decisions.
-    </p>
-    <br>
-    <a href="contact.html" class="btn btn-primary">Schedule a Consultation</a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2>From trusted roots to a more complete approach</h2>
-    <p>
-      Ball Financial is built on the foundation of Ball Insurance Agency — a long-standing presence in Sandusky, Michigan. That history is rooted in relationships, trust, and helping people protect what matters.
-    </p>
-    <p>
-      Over time, it became clear that many clients needed more than insurance. They needed guidance across investments, retirement planning, taxes, and long-term financial decisions.
-    </p>
-    <p>
-      Ball Financial was created as a natural evolution — a way to provide a more complete, coordinated financial planning experience while maintaining the same level of trust the agency was built on.
-    </p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2>How we think about financial planning</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Planning comes first</h3>
-        <p>Decisions are driven by a clear financial plan, not by products or transactions.</p>
-      </div>
-
-      <div class="card">
-        <h3>Everything is connected</h3>
-        <p>Investments, taxes, insurance, and retirement decisions should work together — not in isolation.</p>
-      </div>
-
-      <div class="card">
-        <h3>Clarity over complexity</h3>
-        <p>Financial decisions should be understandable and practical, not confusing or overwhelming.</p>
-      </div>
+  <div class="topbar">
+    <div class="container">
+      <div>Ball Financial | About</div>
+      <div>Sandusky, Michigan | (810) 648-3033</div>
     </div>
   </div>
-</section>
 
-<section class="section">
-  <div class="container">
-    <h2>What makes Ball Financial different</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Planning-first approach</h3>
-        <p>Advice starts with your situation, not a product or pitch.</p>
-      </div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Ball Financial home">
+        <div class="brand-mark">BF</div>
+        <div class="brand-text">
+          <strong>Ball Financial</strong>
+          <span>A branch of Ball Insurance Agency</span>
+        </div>
+      </a>
 
-      <div class="card">
-        <h3>Relationship-driven</h3>
-        <p>Long-term relationships matter more than one-time transactions.</p>
-      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-      <div class="card">
-        <h3>Coordinated strategy</h3>
-        <p>Your financial life is connected — your plan should be too.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2>Who we work with</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Pre-retirees</h3>
-        <p>Individuals preparing for retirement who want clarity and confidence.</p>
-      </div>
-
-      <div class="card">
-        <h3>Retirees</h3>
-        <p>Clients focused on income, distribution strategies, and long-term planning.</p>
-      </div>
-
-      <div class="card">
-        <h3>Business owners & families</h3>
-        <p>Those managing more complexity and looking for coordinated financial guidance.</p>
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="services.html">View Services</a>
+        <a class="btn btn-primary" href="contact.html">Schedule a Consultation</a>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section">
-  <div class="container">
-    <h2>Built on trust. Focused on long-term results.</h2>
-    <p>
-      Ball Financial combines the legacy of a trusted local business with a more modern, comprehensive financial planning approach.
-    </p>
-    <p>
-      The goal is simple — help clients make better decisions, stay organized, and move forward with confidence.
-    </p>
-  </div>
-</section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">About Ball Financial</span>
+          <h1>Built on local trust. Designed for people who need more than surface-level advice.</h1>
+          <p class="lead">
+            Ball Financial exists for individuals, retirees, families, and business owners who want financial planning that brings investments, retirement decisions, tax-aware strategy, and protection planning into one more coordinated framework.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="contact.html">Start Your Plan</a>
+            <a class="btn btn-secondary" href="#story">Read Our Story</a>
+          </div>
+        </div>
 
-<section class="section">
-  <div class="container">
-    <div class="cta">
-      <h2>Start the conversation.</h2>
-      <p>Have a simple, no-pressure discussion about your financial situation and where you want to go.</p>
-      <br>
-      <a href="contact.html" class="btn btn-primary">Book a Meeting</a>
+        <aside class="hero-card">
+          <h3>Why this firm exists</h3>
+          <ul class="list">
+            <li>Too much financial advice is fragmented and reactive</li>
+            <li>Many clients do not need more products — they need better coordination</li>
+            <li>Planning should connect retirement, investments, insurance, and long-term goals</li>
+            <li>Trust still matters, but so does a more strategic approach</li>
+          </ul>
+
+          <div class="mini-grid">
+            <div class="mini-stat">
+              <strong>Planning</strong>
+              <span>before products</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Clear</strong>
+              <span>not cluttered advice</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Long-Term</strong>
+              <span>relationship focus</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="container">
+        <h2>From trusted roots to a broader planning relationship</h2>
+        <p class="section-intro">
+          Ball Financial is not a break from Ball Insurance Agency. It is an evolution of it.
+        </p>
+
+        <div class="grid-3">
+          <article class="card story-card">
+            <span class="tag">Foundation</span>
+            <h3>Local trust came first</h3>
+            <p>
+              Ball Insurance Agency built its reputation the way strong firms usually do: through consistency, relationships, and being a trusted name people could come back to over time.
+            </p>
+          </article>
+
+          <article class="card story-card">
+            <span class="tag">Shift</span>
+            <h3>Client needs became more complex</h3>
+            <p>
+              Over time, conversations moved beyond protection alone. People needed help thinking through retirement planning, investment management, tax-aware decisions, and how all of those pieces fit together.
+            </p>
+          </article>
+
+          <article class="card story-card">
+            <span class="tag">Evolution</span>
+            <h3>Ball Financial was created to connect the pieces</h3>
+            <p>
+              The goal is simple: offer a more complete financial planning experience for people who have outgrown one-off advice and want a clearer, more strategic path forward.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="panel">
+          <h2>Our planning philosophy</h2>
+          <p style="margin-bottom:16px;">
+            The best financial planning is not built around isolated recommendations. It is built around the fact that most important decisions are connected.
+          </p>
+          <ul class="list">
+            <li>Planning should drive decisions, not product inventory</li>
+            <li>Retirement strategy, investment management, taxes, and protection should inform each other</li>
+            <li>Complexity should be organized, not amplified</li>
+            <li>Good advice should create clarity, not dependency</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>What that means in practice</h2>
+          <p style="margin-bottom:16px;">
+            Ball Financial is built for people who want a financial advisor to help them think more clearly, make decisions with more structure, and move forward with less noise.
+          </p>
+          <ul class="list">
+            <li>More coordinated strategy</li>
+            <li>More intentional retirement planning</li>
+            <li>Better alignment across financial decisions</li>
+            <li>A relationship designed to last longer than one transaction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>What makes Ball Financial different</h2>
+        <p class="section-intro">
+          This page should make it clear that the firm is not trying to look bigger than it is. It is trying to be more useful, more thoughtful, and more complete for the right clients.
+        </p>
+
+        <div class="grid-4">
+          <article class="card">
+            <h4>Planning-first</h4>
+            <p>Advice begins with strategy and priorities, not with a product-first conversation.</p>
+          </article>
+
+          <article class="card">
+            <h4>Relationship-driven</h4>
+            <p>The goal is long-term trust and better decision-making over time, not one-time transactions.</p>
+          </article>
+
+          <article class="card">
+            <h4>Built for complexity</h4>
+            <p>As wealth, income, and responsibilities grow, decisions need more structure and coordination.</p>
+          </article>
+
+          <article class="card">
+            <h4>Clear by design</h4>
+            <p>Clients should understand the plan, the tradeoffs, and the next steps without being buried in noise.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Who we work with</h2>
+        <p class="section-intro">
+          The firm is designed for people who want real financial planning, not just occasional advice around isolated issues.
+        </p>
+
+        <div class="grid-4">
+          <article class="card">
+            <h4>Pre-retirees</h4>
+            <p>People approaching retirement who want clarity around readiness, timing, and the transition into income planning.</p>
+          </article>
+
+          <article class="card">
+            <h4>Retirees</h4>
+            <p>Households focused on withdrawals, portfolio structure, tax-aware decisions, and preserving flexibility.</p>
+          </article>
+
+          <article class="card">
+            <h4>Families building wealth</h4>
+            <p>Clients balancing income, savings, protection, and long-term planning across multiple priorities.</p>
+          </article>
+
+          <article class="card">
+            <h4>Business owners & higher earners</h4>
+            <p>People with growing complexity who need a more organized relationship with a financial advisor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="panel">
+          <h2>Trust and credibility still matter</h2>
+          <p style="margin-bottom:16px;">
+            Ball Financial benefits from something many new firms do not have: a brand foundation built on established trust. That matters. But trust alone is not the point.
+          </p>
+          <ul class="list">
+            <li>Local roots create familiarity and accountability</li>
+            <li>A planning-led approach creates stronger long-term value</li>
+            <li>The brand is meant to feel grounded, not generic</li>
+            <li>The relationship should feel professional without feeling distant</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2>What clients should expect</h2>
+          <p style="margin-bottom:16px;">
+            Working with Ball Financial should feel less like chasing scattered financial decisions and more like operating from a stronger framework.
+          </p>
+          <div class="process">
+            <article class="process-step">
+              <h4>Clarity</h4>
+              <p>A better understanding of where you stand and what matters most.</p>
+            </article>
+
+            <article class="process-step">
+              <h4>Structure</h4>
+              <p>A more coordinated way to evaluate important financial decisions.</p>
+            </article>
+
+            <article class="process-step">
+              <h4>Alignment</h4>
+              <p>Investments, retirement planning, and protection working together.</p>
+            </article>
+
+            <article class="process-step">
+              <h4>Confidence</h4>
+              <p>A steadier path forward with fewer disconnected decisions.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <div class="cta-grid">
+            <div>
+              <h2>If you want more than fragmented advice, let’s talk.</h2>
+              <p>
+                Ball Financial is built for people who want thoughtful financial planning, a more coordinated strategy, and a relationship that helps simplify important decisions over time.
+              </p>
+              <div class="btn-row">
+                <a class="btn btn-secondary" href="contact.html" style="background:#fff;color:#17324d;border-color:#fff;">Book a Meeting</a>
+                <a class="btn btn-accent" href="contact.html">Schedule a Consultation</a>
+              </div>
+            </div>
+
+            <div class="cta-panel">
+              <h3>Good final message for this page</h3>
+              <ul class="list">
+                <li>No pressure conversation</li>
+                <li>Clearer understanding of where you are</li>
+                <li>Thoughtful discussion of next steps</li>
+                <li>A better sense of fit on both sides</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Ball Financial</h3>
+          <p>Planning-focused guidance for individuals, retirees, families, and business owners who want more than surface-level advice.</p>
+        </div>
+        <div>
+          <h3>Pages</h3>
+          <p><a href="index.html">Home</a></p>
+          <p><a href="services.html">Services</a></p>
+          <p><a href="about.html">About</a></p>
+          <p><a href="contact.html">Contact</a></p>
+        </div>
+        <div>
+          <h3>Next Step</h3>
+          <p>Schedule a Consultation</p>
+          <p>(810) 648-3033</p>
+          <p>Sandusky, Michigan</p>
+        </div>
+      </div>
+      <div class="footer-note">
+        Replace this footer with your actual disclosure language, privacy links, registration details, and compliance-required content before launch.
+      </div>
     </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    Ball Financial | Sandusky, Michigan | (810) 648-3033
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
